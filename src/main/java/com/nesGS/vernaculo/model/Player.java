@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Data
@@ -39,6 +39,7 @@ public class Player {
     @Column(name = "derrotas", nullable = false, length = 4)
     private int matchLose;
 
-    @ManyToMany(mappedBy = "players")
-    private Set<Team> teams;
+    @ManyToOne
+    @JoinColumn(name = "equipo_id")
+    private Team teams;
 }

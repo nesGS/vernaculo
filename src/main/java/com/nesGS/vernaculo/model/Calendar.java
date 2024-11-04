@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -15,7 +16,7 @@ public class Calendar {
     private long id;
 
 
-    private Competition competition;
-    private Match match;
+    @OneToMany
+    private List<Match> matchs;
     private Date eventDate;
 }

@@ -3,7 +3,7 @@ package com.nesGS.vernaculo.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,15 +24,21 @@ public class Team {
     private String category;
     private String coach;
 
+//    @JoinTable(
+//            name = "luchador_equipo",
+//            joinColumns = @JoinColumn(name = "equipo_id"),
+//            inverseJoinColumns = @JoinColumn(name = "luchador_id")
+//    )
+
+    @OneToMany(mappedBy = "teams")
+    private List<Player> players;
+
     @ManyToMany
     @JoinTable(
-            name = "luchador_equipo",
+            name = "equipo_competicion",
             joinColumns = @JoinColumn(name = "equipo_id"),
-            inverseJoinColumns = @JoinColumn(name = "luchador_id")
+            inverseJoinColumns = @JoinColumn(name = "competicion_id")
     )
-    private Set<Player> players;
-
-    @ManyToMany(mappedBy = "teams")
-    private Set<Competition> competitions;
+    private List<Competition> competitions;
 
 }

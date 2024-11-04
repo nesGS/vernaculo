@@ -3,7 +3,7 @@ package com.nesGS.vernaculo.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Set;
+import java.util.List;
 
 @Data
 @Entity
@@ -24,5 +24,5 @@ public class Club {
     private String logo;
 
     @OneToMany(mappedBy = "club")
-    private Set<Team> teams;
+    private List<Team> teams;
 }

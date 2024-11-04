@@ -18,12 +18,12 @@ public class Match {
     @JoinColumn(name = "competicion_id")
     private Competition competition;
 
-    @OneToOne
-    @JoinColumn(name = "equipo_local")
+    @ManyToOne
+    @JoinColumn(name = "equipo_local_id")
     private Team homeTeamId;
 
-    @OneToOne
-    @JoinColumn(name = "equipo_visitante")
+    @ManyToOne
+    @JoinColumn(name = "equipo_visitante_id")
     private Team awayTeamId;
 
     @Column(name = "fecha_encuentro", nullable = false, length = 100)
