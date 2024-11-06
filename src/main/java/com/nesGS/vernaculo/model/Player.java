@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Data
@@ -24,22 +23,10 @@ public class Player {
     @Column(name = "edad", nullable = false)
     private Date birth;
 
-    @Column(name = "amonestaciones", nullable = false, length = 4)
-    private int warningAmount;
-
-    @Column(name = "luchas_a_favor", nullable = false, length = 4)
-    private int fightWin;
-
-    @Column(name = "luchas_en_contra", nullable = false, length = 4)
-    private int fightLose;
-
-    @Column(name = "victorias", nullable = false, length = 4)
-    private int matchWin;
-
-    @Column(name = "derrotas", nullable = false, length = 4)
-    private int matchLose;
-
     @ManyToOne
     @JoinColumn(name = "equipo_id")
     private Team teams;
+
+    @OneToOne(mappedBy = "player")
+    private PlayerStats playerStats;
 }

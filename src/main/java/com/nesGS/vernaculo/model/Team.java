@@ -22,13 +22,9 @@ public class Team {
     private String name;
 
     private String category;
+
     private String coach;
 
-//    @JoinTable(
-//            name = "luchador_equipo",
-//            joinColumns = @JoinColumn(name = "equipo_id"),
-//            inverseJoinColumns = @JoinColumn(name = "luchador_id")
-//    )
 
     @OneToMany(mappedBy = "teams")
     private List<Player> players;
